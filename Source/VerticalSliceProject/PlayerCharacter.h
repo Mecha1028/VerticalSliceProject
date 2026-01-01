@@ -5,6 +5,9 @@
 #include "Camera/CameraComponent.h"
 #include "PlayerCharacter.generated.h"
 
+class USpringArmComponent;
+class UCameraComponent;
+
 UCLASS()
 class VERTICALSLICEPROJECT_API APlayerCharacter : public ACharacter
 {
@@ -14,18 +17,18 @@ public:
 	// Sets default values for this character's properties
 	APlayerCharacter();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UCameraComponent* Camera;
+	virtual void Tick(float DeltaTime) override;
+
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+private:
+	UPROPERTY(VisibleAnywhere)
+	USpringArmComponent* SpringArm;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* Camera;
 };

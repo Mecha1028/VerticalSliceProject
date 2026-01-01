@@ -1,13 +1,21 @@
 #include "PlayerCharacter.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "Camera/CameraComponent.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
-	Camera->SetupAttachment(GetMesh());
+	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
+	SpringArm->SetupAttachment(GetRootComponent());
+	SpringArm->TargetArmLength = 800.f;
+	SpringArm->SetRelativeRotation(FRotator(-35.f, 45.f, 0.f));
 
+	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+	Camera->SetupAttachment(SpringArm);
+	Camera->ProjectionMode = ECameraProjectionMode::Orthographic;
+	Camera->SetOrthoWidth(1024.f);
 }
 
 // Called when the game starts or when spawned
