@@ -15,7 +15,7 @@ APlayerCharacter::APlayerCharacter()
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(SpringArm);
 	Camera->ProjectionMode = ECameraProjectionMode::Orthographic;
-	Camera->SetOrthoWidth(1024.f);
+	Camera->SetOrthoWidth(768.f);
 }
 
 // Called when the game starts or when spawned
