@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "FinishZone.generated.h"
 
+class UBoxComponent;
+
 UCLASS()
 class VERTICALSLICEPROJECT_API AFinishZone : public AActor
 {
@@ -23,4 +25,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+private:
+	UPROPERTY(VisibleAnywhere)
+	UBoxComponent* CollisionBox;
 };
