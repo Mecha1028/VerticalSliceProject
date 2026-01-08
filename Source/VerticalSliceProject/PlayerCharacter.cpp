@@ -17,8 +17,8 @@ APlayerCharacter::APlayerCharacter()
 	Camera->ProjectionMode = ECameraProjectionMode::Orthographic;
 	Camera->SetOrthoWidth(768.f);
 	Camera->SetAutoCalculateOrthoPlanes(false);
-	//Camera->SetOrthoNearClipPlane(0.f);
-	//Camera->SetOrthoFarClipPlane(10000.f);
+	Camera->SetOrthoNearClipPlane(0.f);
+	Camera->SetOrthoFarClipPlane(10000.f);
 }
 
 // Called when the game starts or when spawned
